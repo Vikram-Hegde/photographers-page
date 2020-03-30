@@ -1,2 +1,137 @@
-@import './colors';
+@import './variables';
 @import './global';
+
+
+.wide-wrapper {
+    width: 100%;
+    background: url("../images/wide-pc.png") no-repeat 50% 50% / cover;
+    height: 490px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.wrapper {
+    display: flex;
+    width: 63.61%;
+    background-color: rgba(1, 1, 1, 0.65);
+
+    .heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    img {
+        height: auto;
+        width: 332px;
+    }
+}
+
+@media(max-width: 1000px) {
+    .wrapper {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(1, 1, 1, 0.35);
+       
+        img {
+           display: none;
+       }
+    }
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    flex-wrap: wrap;
+    padding: 0 30px;
+
+
+    .menu {
+        display: none;
+    }
+
+    ul {
+        display: flex;
+        list-style-type: none;
+        font: 400 16px lato;
+        margin-left: auto;
+
+        li {
+            margin: 0 20px;
+            cursor: pointer;
+            user-select: none;
+
+            a {
+                text-decoration: none;
+                color: $dark;
+            }
+
+            &:last-child {
+                margin: 0 0 0 25px;
+            }
+
+            &:hover {
+                filter: brightness(90%);
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
+        }
+    }
+
+    @media(max-width: 900px) {
+        .logo {
+            width: 100%;
+            height: inherit;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu {
+            display: block;
+            position: absolute;
+            right: 30px;
+            cursor: pointer;
+            transform: scale(.9);
+            transform-origin: center;
+        }
+
+        ul {
+            flex-direction: column;
+            align-items: center;
+            background-color: $light;
+            width: 100%;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s ease 0.2s;
+
+            li {
+                opacity: 0;
+                padding: 10px 0;
+                transition: opacity 0.2s;
+
+                a {
+                    color: $dark;
+                }
+
+                &:last-child {
+                    margin: 0;
+                }
+            }
+        }
+
+        ul.open {
+            transform: scaleY(1);
+            transition: transform 0.3s ease-in-out;
+
+            li {
+                transition: opacity .2s ease-in 0.3s;
+                opacity: 1;
+            }
+        }
+    }
+}
