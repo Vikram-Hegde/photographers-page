@@ -154,6 +154,10 @@ footer {
             }
         }
     }
+
+    .author img{
+       mix-blend-mode: soft-light;
+    }
 }
 
 @media(max-width: 600px) {
@@ -168,5 +172,7 @@ footer {
                 transform: scale(0.6);
             }
         }
+
+        
     }
 }
