@@ -1,5 +1,6 @@
 @import './variables';
 @import './global';
+@import './mobile';
 
 
 .wide-wrapper {
@@ -13,14 +14,17 @@
 
 .wrapper {
     display: flex;
-    width: 63.61%;
+    max-width:916px;
     background-color: rgba(1, 1, 1, 0.65);
+   
 
     .heading {
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
+        padding: 0 20px;
+        letter-spacing: 2px;
     }
 
     img {
@@ -29,108 +33,139 @@
     }
 }
 
-@media(max-width: 1000px) {
+@media(max-width: 1150px) {
     .wrapper {
-        width: 100%;
         height: 100%;
         background-color: rgba(1, 1, 1, 0.35);
        
+
         img {
-           display: none;
-       }
+            display: none;
+        }
+
+        .heading {
+            .main-heading {
+                font-size: 2.2rem;
+            }
+        }
+    }
+}
+@media(max-width: 600px) {
+    .wrapper {
+
+        .heading {
+
+            .main-heading {
+                font-size: 2rem;
+            }
+        }
     }
 }
 
-nav {
+.about {
+    background-color: $dark;
     display: flex;
+    justify-content: center;
     align-items: center;
-    height: 100px;
-    flex-wrap: wrap;
-    padding: 0 30px;
+    background-color: $dark;
+    min-height: 85vh;
+}
 
+@media(max-width: 600px) {
+    .about {
+        padding: 5px;
+        min-height: auto;
+       
+        .container {
+            width: 100%;
+        }
+    }
+}
 
-    .menu {
-        display: none;
+.brands, .services {
+    padding: 80px 0;
+    text-align: center;
+
+    p {
+        margin-bottom: 100px;
     }
 
-    ul {
+    .images {
         display: flex;
-        list-style-type: none;
-        font: 400 16px lato;
-        margin-left: auto;
+        justify-content: space-around;
+    }
+}
 
-        li {
-            margin: 0 20px;
-            cursor: pointer;
-            user-select: none;
+@media(max-width: 600px) {
+    .brands, .services {
+        padding: 30px 0;
 
-            a {
-                text-decoration: none;
-                color: $dark;
-            }
+        p {
+            margin-bottom: 35px;
+        }
+    }
+}
 
-            &:last-child {
-                margin: 0 0 0 25px;
-            }
+.services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-            &:hover {
-                filter: brightness(90%);
-            }
+.container:not(:last-child) {
+    margin-bottom: 80px;
+}
 
-            &:active {
-                transform: scale(0.95);
+.container:not(:first-child) p.lower {
+    margin-bottom: 40px;
+}
+
+@media(max-width: 600px) {
+    .container:not(:last-child) {
+        margin-bottom: 30px;
+    }
+}
+
+footer {
+    background-color: $dark;
+    color:$light;
+    padding: 80px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    h1 {
+        color: $light;
+    }
+
+    .content {
+
+        
+        ul {
+            list-style: none;
+            display: flex;
+
+            li {
+                margin-right: 20px;
+
+                img {
+                    transform: scale(0.8);
+                }
             }
         }
     }
+}
 
-    @media(max-width: 900px) {
-        .logo {
-            width: 100%;
-            height: inherit;
-            display: flex;
-            align-items: center;
-        }
+@media(max-width: 600px) {
+    footer {
+        padding: 30px 0;
+        flex-direction: column;
 
-        .menu {
-            display: block;
-            position: absolute;
-            right: 30px;
-            cursor: pointer;
-            transform: scale(.9);
-            transform-origin: center;
-        }
+        .content {
+            margin-bottom: 20px;
 
-        ul {
-            flex-direction: column;
-            align-items: center;
-            background-color: $light;
-            width: 100%;
-            transform: scaleY(0);
-            transform-origin: top;
-            transition: transform 0.3s ease 0.2s;
-
-            li {
-                opacity: 0;
-                padding: 10px 0;
-                transition: opacity 0.2s;
-
-                a {
-                    color: $dark;
-                }
-
-                &:last-child {
-                    margin: 0;
-                }
-            }
-        }
-
-        ul.open {
-            transform: scaleY(1);
-            transition: transform 0.3s ease-in-out;
-
-            li {
-                transition: opacity .2s ease-in 0.3s;
-                opacity: 1;
+           ul li img {
+                transform: scale(0.6);
             }
         }
     }
